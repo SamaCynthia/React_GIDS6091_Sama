@@ -1,0 +1,14 @@
+name: Desafio 01
+on: 
+  workflow_dispatch:
+
+jobs:
+  Tarea1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Di Hola
+        run: echo "Hello World Para Carlos Samael De la UTNG"
+
+      - name: Desplegar fecha del sistema
+        run: date
