@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js 
         uses: actions/setup-node@v4 
         with: 
-          node-version: 20 
+          node-version: 24 
           cache: 'npm' 
           # 2. Le decimos a la caché exactamente dónde está el lockfile
           cache-dependency-path: ./proyecto-react-sama/package-lock.json
