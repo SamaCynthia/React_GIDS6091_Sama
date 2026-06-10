@@ -10,6 +10,11 @@ jobs:
   deploy: 
     name: Deploy to Vercel (Production) 
     runs-on: ubuntu-latest 
+
+    # 1. Esto le dice a todos los comandos 'run' que se ejecuten dentro de tu carpeta de React
+    defaults:
+      run:
+        working-directory: ./proyecto-react-sama
   
     steps: 
       - name: Checkout code 
@@ -18,8 +23,10 @@ jobs:
       - name: Setup Node.js 
         uses: actions/setup-node@v4 
         with: 
-          node-version: 24 
+          node-version: 20 
           cache: 'npm' 
+          # 2. Le decimos a la caché exactamente dónde está el lockfile
+          cache-dependency-path: ./proyecto-react-sama/package-lock.json
   
       - name: Install dependencies 
         run: npm ci 
