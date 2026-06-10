@@ -5,11 +5,20 @@ on:
     branches: 
       - main 
       - master 
+
+# Esto silencia el warning de GitHub obligando a usar Node 24 internamente
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   
 jobs: 
   deploy: 
     name: Deploy to Vercel (Production) 
     runs-on: ubuntu-latest 
+
+    # IMPORTANTE: Esto obliga a los comandos a ejecutarse en tu carpeta de React
+    defaults:
+      run:
+        working-directory: ./proyecto-react-sama
   
     steps: 
       - name: Checkout code 
@@ -20,6 +29,8 @@ jobs:
         with: 
           node-version: 24 
           cache: 'npm' 
+          # IMPORTANTE: Le dice a la caché dónde está exactamente el archivo
+          cache-dependency-path: ./proyecto-react-sama/package-lock.json
   
       - name: Install dependencies 
         run: npm ci 
